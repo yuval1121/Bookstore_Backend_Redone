@@ -10,7 +10,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - name: Installing Dependencies
         run: npm ci
       - name: Compiling project
