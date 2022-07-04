@@ -1,6 +1,6 @@
 import { build } from "./app";
 
-const server = build({});
+const server = build();
 
 server.listen({ port: 8080 }, (err, address) => {
   if (err) {
