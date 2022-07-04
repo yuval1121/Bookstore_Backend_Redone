@@ -1,8 +1,9 @@
 import { build } from "./app";
 
-const server = build();
+const server = build({ logger: true });
 
-server.listen({ port: 8080 }, (err, address) => {
+const PORT = Number(process.env.PORT) || 5000;
+server.listen({ port: PORT }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
