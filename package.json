@@ -9,7 +9,7 @@
     "prestart": "npm run build",
     "start": "node dist/server.js",
     "dev": "ts-node-dev src/server.ts",
-    "test": "tap --test-ignore=^.*\\.ts$"
+    "test": "tap"
   },
   "author": "",
   "license": "ISC",
