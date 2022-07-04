@@ -9,11 +9,12 @@ jobs:
       - name: Sets up node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: "16"
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "The workflow is now ready to test your code on the runner."
-      - run: echo "Installing deps and running tests"
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+      - name: Installing Dependencies
+        run: npm ci
+      - name: Compiling project
+        run: npm run build
+      - name: Run tests
+        run: npm test
       - run: echo "This job's status is ${{ job.status }}."
