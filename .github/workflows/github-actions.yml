@@ -1,7 +1,7 @@
 name: GitHub Actions Pipeline
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Continuous Integration:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
