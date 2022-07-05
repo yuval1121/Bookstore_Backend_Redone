@@ -4,6 +4,9 @@ jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
 
+    env:
+      NODE_ENV: production
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
