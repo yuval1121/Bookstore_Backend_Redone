@@ -38,8 +38,3 @@ model Order {
   owner     User     @relation(fields: [ownerId], references: [id])
   Items     Item[]
 }
-
-enum Role {
-  USER
-  ADMIN
-}

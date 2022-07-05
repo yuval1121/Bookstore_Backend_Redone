@@ -9,7 +9,7 @@
     "prestart": "npm run build",
     "start": "node dist/server.js",
     "dev": "ts-node-dev src/server.ts",
-    "migrate": "npx prisma migrate dev && npx prisma generate",
+    "migrate": "npx prisma migrate dev --name ci && npx prisma generate",
     "test": "tap"
   },
   "author": "",
