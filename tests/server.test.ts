@@ -1,4 +1,4 @@
-import { build } from "../app";
+import { build } from "../src/app";
 import { test } from "tap";
 
 test('Requests the "/" route', async t => {
