@@ -1,6 +1,13 @@
 import { build } from "./app";
 
-const server = build({ logger: true });
+const server = build({
+  logger: {
+    level: "info",
+    transport: {
+      target: "pino-pretty",
+    },
+  },
+});
 
 const PORT = Number(process.env.PORT || 5000);
 server.listen({ port: PORT }, (err, address) => {

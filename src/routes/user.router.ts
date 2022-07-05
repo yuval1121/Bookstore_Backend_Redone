@@ -4,7 +4,7 @@ import {
   FastifyPluginOptions,
 } from "fastify";
 import { registerUserHandler } from "../controllers/user.controller";
-import { CreateUserInput } from "../schemas/user.schema";
+import { CreateUserInput, CreateUserOutput } from "../schemas/user.schema";
 
 const userRoutes: FastifyPluginAsync = async (
   server: FastifyInstance,
@@ -16,7 +16,7 @@ const userRoutes: FastifyPluginAsync = async (
       schema: {
         body: CreateUserInput,
         response: {
-          200: CreateUserInput,
+          201: CreateUserOutput,
         },
       },
     },
