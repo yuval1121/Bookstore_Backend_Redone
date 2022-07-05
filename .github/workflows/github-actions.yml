@@ -4,9 +4,6 @@ jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
 
-    env:
-      NODE_ENV: production
-
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -19,10 +16,10 @@ jobs:
       - name: Installing Dependencies
         run: npm ci
 
-      - name: Building project
+      - name: Compiling project
         run: npm run build
 
-      - name: Running tests
+      - name: Run tests
         run: npm test
 
       - run: echo "This job's status is ${{ job.status }}."
