@@ -1,11 +1,11 @@
 import fastify, { FastifyServerOptions } from "fastify";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
-import userRoutes from "./routes/user.router";
+import { userRouter } from "./routes";
 
 export const build = (opts: FastifyServerOptions = {}) => {
   const app = fastify(opts).withTypeProvider<TypeBoxTypeProvider>();
 
-  app.register(userRoutes, { prefix: "api/users" });
+  app.register(userRouter, { prefix: "api/users" });
 
   app.get("/", async (req, res) => {
     return { hello: "world" };

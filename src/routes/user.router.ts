@@ -6,7 +6,7 @@ import {
 import { registerUserHandler } from "../controllers/user.controller";
 import { CreateUserInput, CreateUserOutput } from "../schemas/user.schema";
 
-const userRoutes: FastifyPluginAsync = async (
+const userRouter: FastifyPluginAsync = async (
   server: FastifyInstance,
   options: FastifyPluginOptions
 ) => {
@@ -24,4 +24,4 @@ const userRoutes: FastifyPluginAsync = async (
   );
 };
 
-export default userRoutes;
+export default userRouter;
