@@ -38,6 +38,9 @@ jobs:
       - name: Run migrations
         run: npx prisma migrate dev --name testing --skip-generate
 
+      - name: Generate types
+        run: npx prisma generate
+
       - name: Compile project
         run: npm run build
 
