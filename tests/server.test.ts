@@ -14,5 +14,5 @@ test("User registration test", async t => {
       password: "12345",
     },
   });
-  t.equal(res.statusCode, 201, "returns a status code of 200");
+  t.equal(res.statusCode, 201, "returns a status code of 201");
 });
