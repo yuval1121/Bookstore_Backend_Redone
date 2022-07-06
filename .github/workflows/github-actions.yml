@@ -4,6 +4,31 @@ jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: postgres://postgres_user:postgres_password@postgres:5432/postgres_db
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          # optional (defaults to `postgres`)
+          POSTGRES_DB: postgres_db
+          # required
+          POSTGRES_PASSWORD: postgres_password
+          # optional (defaults to `5432`)
+          POSTGRES_PORT: 5432
+          # optional (defaults to `postgres`)
+          POSTGRES_USER: postgres_user
+        ports:
+          # maps tcp port 5432 on service container to the host
+          - 5432:5432
+        # set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -12,6 +37,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+
+      - name: Installing PostgreSQL client
+        run: |
+          apt-get update
+          apt-get install --yes postgresql-client
 
       - name: Installing Dependencies
         run: npm ci
