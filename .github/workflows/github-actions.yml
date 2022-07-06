@@ -4,22 +4,15 @@ jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
 
-    container: node:16
+    container: node:16.15
 
     env:
       DATABASE_URL: postgres://postgres:postgres_password@postgres:5432/postgres
 
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:14.4
         env:
-          # optional (defaults to `postgres`)
-          #POSTGRES_DB: postgres_db
-          # required
-          # optional (defaults to `5432`)
-          # POSTGRES_PORT: 5432
-          # optional (defaults to `postgres`)
-          # POSTGRES_USER: postgres_user
           POSTGRES_PASSWORD: postgres_password
         ports:
           - 5432:5432
@@ -34,18 +27,18 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Installing PostgreSQL client
+      - name: Install PostgreSQL client
         run: |
           apt-get update
           apt-get install --yes postgresql-client
 
-      - name: Installing Dependencies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Run migrations
         run: npx prisma migrate dev --name testing --skip-generate
 
-      - name: Compiling project
+      - name: Compile project
         run: npm run build
 
       - name: Run tests
