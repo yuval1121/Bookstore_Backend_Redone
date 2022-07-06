@@ -1,7 +1,7 @@
 import { build } from "../../src/app";
 import { test } from "tap";
 
-test("Server integration tests", () => {
+test("Server integration tests", async () => {
   test("User registration test", async t => {
     const app = build();
 
