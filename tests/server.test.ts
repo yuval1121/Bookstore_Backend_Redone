@@ -1,7 +1,7 @@
 import { build } from "../src/app";
 import { test } from "tap";
 
-test('Requests the "/" route', async t => {
+test("User registration test", async t => {
   const app = build();
 
   const res = await app.inject({
