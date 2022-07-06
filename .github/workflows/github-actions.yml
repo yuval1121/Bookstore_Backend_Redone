@@ -37,8 +37,8 @@ jobs:
 
       - name: Installing PostgreSQL client
         run: |
-          sudo apt-get update
-          sudo apt-get install --yes postgresql-client
+          apt-get update
+          apt-get install --yes postgresql-client
 
       - name: Installing Dependencies
         run: npm ci
