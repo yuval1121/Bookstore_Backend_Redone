@@ -4,4 +4,4 @@ lines: 10
 statements: 10
 
 files:
-  - 'dist/tests/*.test.js'
+  - "dist/tests/**/*.test.js"
