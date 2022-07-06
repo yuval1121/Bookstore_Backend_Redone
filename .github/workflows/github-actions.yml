@@ -6,8 +6,6 @@ jobs:
 
     container: node:16
 
-    env:
-
     services:
       postgres:
         image: postgres:latest
