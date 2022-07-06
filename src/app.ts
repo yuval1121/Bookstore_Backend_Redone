@@ -7,9 +7,5 @@ export const build = (opts: FastifyServerOptions = {}) => {
 
   app.register(userRouter, { prefix: "api/users" });
 
-  app.get("/", async (req, res) => {
-    return { hello: "world" };
-  });
-
   return app;
 };

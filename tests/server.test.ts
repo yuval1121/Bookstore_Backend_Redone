@@ -5,9 +5,14 @@ test('Requests the "/" route', async t => {
   const app = build();
 
   const res = await app.inject({
-    method: "GET",
-    url: "/",
+    method: "POST",
+    url: "/api/users",
+    payload: {
+      name: "greg",
+      email: "a@a.com",
+      age: 22,
+      password: "12345",
+    },
   });
-
-  t.equal(res.statusCode, 200, "returns a status code of 200");
+  t.equal(res.statusCode, 201, "returns a status code of 200");
 });

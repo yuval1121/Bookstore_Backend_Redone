@@ -4,6 +4,8 @@ jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
 
+    container: node:16
+
     env:
       DATABASE_URL: postgres://postgres_user:postgres_password@postgres:5432/postgres_db
 
@@ -33,11 +35,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Sets up node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-
       - name: Installing PostgreSQL client
         run: |
           sudo apt-get update
@@ -51,5 +48,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-      - run: echo "This job's status is ${{ job.status }}."
