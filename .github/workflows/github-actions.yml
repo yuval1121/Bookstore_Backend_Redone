@@ -44,7 +44,7 @@ jobs:
         run: npm ci
 
       - name: Run migrations
-        run: npx prisma migrate dev --name testing
+        run: npx prisma migrate dev --name testing --skip-generate
 
       - name: Compiling project
         run: npm run build
