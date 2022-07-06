@@ -9,10 +9,17 @@ test("User registration test", async t => {
     url: "/api/users",
     payload: {
       name: "greg",
-      email: "a@a.com",
+      email: "ar@a.com",
       age: 22,
       password: "12345",
     },
   });
+  const parsedResponse = JSON.parse(res.payload);
+
   t.equal(res.statusCode, 201, "returns a status code of 201");
+  t.hasStrict(parsedResponse, {
+    name: "greg",
+    email: "ar@a.com",
+    age: 22,
+  });
 });
