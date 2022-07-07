@@ -4,7 +4,9 @@ const userCore = {
   name: Type.String(),
   email: Type.String({ format: "email" }),
   age: Type.Integer(),
-  role: Type.Optional(Type.String()),
+  role: Type.Optional(
+    Type.Union([Type.Literal("customer"), Type.Literal("admin")])
+  ),
 };
 
 export const createUserSchema = Type.Object({

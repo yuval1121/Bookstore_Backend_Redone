@@ -1,15 +1,13 @@
-import { FastifyReply, FastifyRequest } from "fastify";
+import { RouteHandler } from "fastify";
 import { CreateUserInput, LoginInput } from "../schemas/user.schema";
 import { createUser, findUserByEmail } from "../services/user.service";
 import bcrypt from "bcrypt";
 import { createSigner } from "fast-jwt";
 
-export const registerUserHandler = async (
-  req: FastifyRequest<{ Body: CreateUserInput }>,
-  rep: FastifyReply
-) => {
+export const registerUserHandler: RouteHandler<{
+  Body: CreateUserInput;
+}> = async (req, rep) => {
   const body = req.body;
-
   try {
     const user = await createUser(body);
     return rep.code(201).send(user);
@@ -19,17 +17,15 @@ export const registerUserHandler = async (
   }
 };
 
-export const loginUserHandler = async (
-  req: FastifyRequest<{ Body: LoginInput }>,
-  rep: FastifyReply
+export const loginUserHandler: RouteHandler<{ Body: LoginInput }> = async (
+  req,
+  rep
 ) => {
   const { email, password } = req.body;
   const user = await findUserByEmail(email);
-
   if (!user) {
     return rep.code(401).send("Invalid credentials");
   }
-
   const isMatch = await bcrypt.compare(password, user.password);
 
   if (!isMatch) {
