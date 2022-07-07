@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateUserInput, LoginInput } from "../schemas/user.schema";
 import { createUser, findUserByEmail } from "../services/user.service";
 import bcrypt from "bcrypt";
-import { server } from "../server";
+import { createSigner } from "fast-jwt";
 
 export const registerUserHandler = async (
   req: FastifyRequest<{ Body: CreateUserInput }>,
@@ -41,6 +41,7 @@ export const loginUserHandler = async (
     role: user.role,
   };
 
-  const token = server.jwt.sign({ payload });
+  const sign = createSigner({ key: async () => "secret" });
+  const token = await sign({ payload });
   return rep.code(200).send({ token });
 };

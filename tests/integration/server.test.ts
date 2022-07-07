@@ -1,9 +1,9 @@
-import { build } from "../../src/app";
 import { test } from "tap";
+import { build } from "../../src/app";
 
 test("Server integration tests", async () => {
-  const app = build();
   test("User registration test", async t => {
+    const app = build();
     const res = await app.inject({
       method: "POST",
       url: "/api/users/register",
@@ -25,6 +25,8 @@ test("Server integration tests", async () => {
   });
 
   test("User signs in test", async t => {
+    const app = build();
+
     const res = await app.inject({
       method: "POST",
       url: "/api/users/login",

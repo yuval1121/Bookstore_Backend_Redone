@@ -7,7 +7,7 @@
     "prebuild": "tsc --build --clean",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "dev": "ts-node-dev src/server.ts",
     "migrate": "npx prisma migrate dev --name ci && npx prisma generate",
     "test": "tap"
@@ -28,11 +28,11 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@fastify/jwt": "^6.2.1",
     "@fastify/type-provider-typebox": "2.0.1",
     "@prisma/client": "4.0.0",
     "@sinclair/typebox": "0.24.10",
     "bcrypt": "5.0.1",
+    "fast-jwt": "^1.6.0",
     "fastify": "4.2.0"
   }
 }
