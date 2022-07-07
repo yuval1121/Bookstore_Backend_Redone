@@ -14,7 +14,8 @@ test("Server integration tests", async () => {
         password: "12345",
       },
     });
-    const parsedResponse = JSON.parse(res.payload);
+
+    const parsedResponse = res.json();
 
     t.equal(res.statusCode, 201);
     t.hasStrict(parsedResponse, {
@@ -35,7 +36,8 @@ test("Server integration tests", async () => {
         password: "12345",
       },
     });
-    const parsedResponse = JSON.parse(res.payload);
+
+    const parsedResponse = res.json();
 
     t.equal(res.statusCode, 200);
     t.ok(parsedResponse);
