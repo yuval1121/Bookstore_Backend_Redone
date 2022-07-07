@@ -7,14 +7,24 @@ const userCore = {
   role: Type.Optional(Type.String()),
 };
 
-export const CreateUserInput = Type.Object({
+export const createUserSchema = Type.Object({
   ...userCore,
   password: Type.String(),
 });
 
-export const CreateUserOutput = Type.Object({
+export const createUserResponseSchema = Type.Object({
   ...userCore,
   id: Type.Integer(),
 });
 
-export type CreateUserInputType = Static<typeof CreateUserInput>;
+export const loginSchema = Type.Object({
+  email: Type.String({ format: "email" }),
+  password: Type.String(),
+});
+
+export const loginResponseSchema = Type.Object({
+  token: Type.String(),
+});
+
+export type CreateUserInput = Static<typeof createUserSchema>;
+export type LoginInput = Static<typeof loginSchema>;

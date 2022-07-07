@@ -7,7 +7,7 @@ test("Server integration tests", async () => {
 
     const res = await app.inject({
       method: "POST",
-      url: "/api/users",
+      url: "/api/users/register",
       payload: {
         name: "greg",
         email: "ar@a.com",
@@ -17,11 +17,28 @@ test("Server integration tests", async () => {
     });
     const parsedResponse = JSON.parse(res.payload);
 
-    t.equal(res.statusCode, 201, "returns a status code of 201");
+    t.equal(res.statusCode, 201);
     t.hasStrict(parsedResponse, {
       name: "greg",
       email: "ar@a.com",
       age: 22,
     });
+  });
+
+  test("User signs in test", async t => {
+    const app = build();
+
+    const res = await app.inject({
+      method: "POST",
+      url: "/api/users/login",
+      payload: {
+        email: "ar@a.com",
+        password: "12345",
+      },
+    });
+    const parsedResponse = JSON.parse(res.payload);
+
+    t.equal(res.statusCode, 200);
+    t.ok(parsedResponse);
   });
 });

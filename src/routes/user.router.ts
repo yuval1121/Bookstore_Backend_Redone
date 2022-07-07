@@ -1,26 +1,40 @@
+import { FastifyInstance, FastifyPluginAsync } from "fastify";
 import {
-  FastifyInstance,
-  FastifyPluginAsync,
-  FastifyPluginOptions,
-} from "fastify";
-import { registerUserHandler } from "../controllers/user.controller";
-import { CreateUserInput, CreateUserOutput } from "../schemas/user.schema";
+  loginUserHandler,
+  registerUserHandler,
+} from "../controllers/user.controller";
+import {
+  createUserSchema,
+  createUserResponseSchema,
+  loginSchema,
+  loginResponseSchema,
+} from "../schemas/user.schema";
 
-const userRouter: FastifyPluginAsync = async (
-  server: FastifyInstance,
-  options: FastifyPluginOptions
-) => {
+const userRouter: FastifyPluginAsync = async (server: FastifyInstance) => {
   server.post(
-    "/",
+    "/register",
     {
       schema: {
-        body: CreateUserInput,
+        body: createUserSchema,
         response: {
-          201: CreateUserOutput,
+          201: createUserResponseSchema,
         },
       },
     },
     registerUserHandler
+  );
+
+  server.post(
+    "/login",
+    {
+      schema: {
+        body: loginSchema,
+        response: {
+          200: loginResponseSchema,
+        },
+      },
+    },
+    loginUserHandler
   );
 };
 

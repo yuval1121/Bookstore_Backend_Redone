@@ -1,6 +1,6 @@
 import { build } from "./app";
 
-const server = build({
+export const server = build({
   logger: {
     level: "info",
     transport: {
