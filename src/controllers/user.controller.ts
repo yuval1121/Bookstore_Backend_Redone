@@ -12,7 +12,7 @@ export const registerUserHandler: RouteHandler<{
     const user = await createUser(body);
     return rep.code(201).send(user);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return rep.code(500).send("Server Error");
   }
 };
@@ -23,9 +23,11 @@ export const loginUserHandler: RouteHandler<{ Body: LoginInput }> = async (
 ) => {
   const { email, password } = req.body;
   const user = await findUserByEmail(email);
+
   if (!user) {
     return rep.code(401).send("Invalid credentials");
   }
+
   const isMatch = await bcrypt.compare(password, user.password);
 
   if (!isMatch) {

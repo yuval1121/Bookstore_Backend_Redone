@@ -10,3 +10,11 @@ export const getItems = async () => {
     },
   });
 };
+
+export const getItemById = async (id: number) => {
+  return await prisma.item.findFirstOrThrow({
+    where: {
+      id,
+    },
+  });
+};

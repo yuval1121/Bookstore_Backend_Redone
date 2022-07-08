@@ -18,7 +18,7 @@ export const authPreHandler = async (
 };
 
 export const authAdmin = async (req: FastifyRequest, rep: FastifyReply) => {
-  if (req.user.role !== "admin") {
+  if (req?.user?.role !== "admin") {
     return rep.code(401).send("Missing admin permissions");
   }
 };

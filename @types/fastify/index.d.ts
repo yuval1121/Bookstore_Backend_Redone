@@ -10,6 +10,6 @@ declare module "fastify" {
     user: {
       name: string;
       role: string;
-    };
+    } | null;
   }
 }

@@ -6,6 +6,10 @@ const server = build({
     transport: {
       target: "pino-pretty",
     },
+    base: {
+      pid: false,
+    },
+    timestamp: false,
   },
 });
 
@@ -15,5 +19,5 @@ server.listen({ port: PORT }, (err, address) => {
     console.error(err);
     process.exit(1);
   }
-  console.log(`Server listening at ${address}`);
+  server.log.info(`Docs available at ${address}/docs`);
 });
