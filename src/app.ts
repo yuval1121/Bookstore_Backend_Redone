@@ -17,7 +17,10 @@ export const build = (opts: FastifyServerOptions = {}) => {
   app.decorate("auth", authPreHandler);
   app.decorate("authAdmin", authAdmin);
 
-  app.register(fastifyCors, { origin: "*" });
+  app.register(fastifyCors, {
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+  });
   app.register(fastifySwagger, swagOptions);
   app.register(userRouter, { prefix: "api/users" });
   app.register(itemRouter, { prefix: "api/items" });
