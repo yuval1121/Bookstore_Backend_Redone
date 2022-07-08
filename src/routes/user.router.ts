@@ -19,6 +19,7 @@ const userRouter: FastifyPluginAsync = async (server: FastifyInstance) => {
         response: {
           201: createUserResponseSchema,
         },
+        tags: ["Users"],
       },
     },
     registerUserHandler
@@ -33,6 +34,7 @@ const userRouter: FastifyPluginAsync = async (server: FastifyInstance) => {
         response: {
           200: loginResponseSchema,
         },
+        tags: ["Users"],
       },
     },
     loginUserHandler

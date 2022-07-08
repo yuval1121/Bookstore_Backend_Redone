@@ -10,6 +10,7 @@
     "start": "node dist/src/server.js",
     "dev": "ts-node-dev src/server.ts",
     "migrate": "npx prisma migrate dev --name ci && npx prisma generate",
+    "resetDB": "npx prisma migrate reset",
     "test": "tap"
   },
   "author": "",

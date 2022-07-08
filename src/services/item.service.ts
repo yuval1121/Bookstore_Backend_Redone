@@ -1,3 +1,4 @@
+import { itemInput } from "../schemas/item.schema";
 import prisma from "../utils/prisma";
 
 export const getItems = async () => {
@@ -13,6 +14,22 @@ export const getItems = async () => {
 
 export const getItemById = async (id: number) => {
   return await prisma.item.findFirstOrThrow({
+    where: {
+      id,
+    },
+  });
+};
+
+export const createItem = async (item: itemInput) => {
+  return await prisma.item.create({
+    data: {
+      ...item,
+    },
+  });
+};
+
+export const deleteItem = async (id: number) => {
+  return await prisma.item.delete({
     where: {
       id,
     },

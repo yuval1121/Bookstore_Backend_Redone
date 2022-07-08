@@ -25,8 +25,7 @@ model Item {
   name      String
   price     Float
   alcoholic Boolean @default(false)
-  orderId   Int
-  order     Order   @relation(fields: [orderId], references: [id])
+  orders    Order[]
 }
 
 model Order {

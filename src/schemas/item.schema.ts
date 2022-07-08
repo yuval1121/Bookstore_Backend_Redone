@@ -1,22 +1,46 @@
 import { Type, Static } from "@sinclair/typebox";
 
-export const getItemSchema = Type.Object({
-  id: Type.Number(),
-});
+const itemInput = {
+  name: Type.String(),
+  price: Type.Number(),
+  alcoholic: Type.Boolean({ default: false }),
+};
 
-export const getItemResponseSchema = Type.Object(
+const itemGenerated = {
+  id: Type.Integer(),
+};
+
+export const getItemSchema = Type.Object(
   {
-    id: Type.Number(),
-    name: Type.String(),
-    price: Type.Number(),
-    alcoholic: Type.Boolean({ default: false }),
+    ...itemGenerated,
   },
-  { $id: "getItemResponseSchema" }
+  { $id: "getItemSchema" }
 );
 
-export const getItemsResponseSchema = Type.Array(getItemResponseSchema, {
-  $id: "getItemsResponseSchema",
+export const createItemSchema = Type.Object(
+  {
+    ...itemInput,
+  },
+  { $id: "createItemSchema" }
+);
+
+export const itemResponseSchema = Type.Object(
+  {
+    ...itemInput,
+    ...itemGenerated,
+  },
+  { $id: "itemResponseSchema" }
+);
+
+export const itemsResponseSchema = Type.Array(itemResponseSchema, {
+  $id: "itemsResponseSchema",
 });
 
-export type getItemParams = Static<typeof getItemSchema>;
-export const itemSchemaArray = [getItemResponseSchema, getItemsResponseSchema];
+export type ItemParams = Static<typeof getItemSchema>;
+export type itemInput = Static<typeof createItemSchema>;
+export const itemSchemaArray = [
+  getItemSchema,
+  createItemSchema,
+  itemResponseSchema,
+  itemsResponseSchema,
+];
