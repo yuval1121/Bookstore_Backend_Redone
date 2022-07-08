@@ -3,7 +3,7 @@ import fastify from "fastify";
 declare module "fastify" {
   export interface FastifyInstance {
     auth: (req, rep) => Promise<undefined>;
-    isAdmin: (req, rep) => Promise<undefined>;
+    authAdmin: (req, rep) => Promise<undefined>;
   }
 
   export interface FastifyRequest {

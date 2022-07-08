@@ -9,24 +9,43 @@ const userCore = {
   ),
 };
 
-export const createUserSchema = Type.Object({
-  ...userCore,
-  password: Type.String(),
-});
+export const createUserSchema = Type.Object(
+  {
+    ...userCore,
+    password: Type.String(),
+  },
+  { $id: "createUserSchema" }
+);
 
-export const createUserResponseSchema = Type.Object({
-  ...userCore,
-  id: Type.Integer(),
-});
+export const createUserResponseSchema = Type.Object(
+  {
+    ...userCore,
+    id: Type.Integer(),
+  },
+  { $id: "createUserResponseSchema" }
+);
 
-export const loginSchema = Type.Object({
-  email: Type.String({ format: "email" }),
-  password: Type.String(),
-});
+export const loginSchema = Type.Object(
+  {
+    email: Type.String({ format: "email" }),
+    password: Type.String(),
+  },
+  { $id: "loginSchema" }
+);
 
-export const loginResponseSchema = Type.Object({
-  token: Type.String(),
-});
+export const loginResponseSchema = Type.Object(
+  {
+    token: Type.String(),
+  },
+  { $id: "loginResponseSchema" }
+);
 
 export type CreateUserInput = Static<typeof createUserSchema>;
 export type LoginInput = Static<typeof loginSchema>;
+
+export const userSchemaArray = [
+  createUserSchema,
+  createUserResponseSchema,
+  loginSchema,
+  loginResponseSchema,
+];

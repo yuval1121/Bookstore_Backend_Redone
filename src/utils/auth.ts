@@ -9,8 +9,8 @@ export const authPreHandler = async (
     const token = req.headers.authorization?.split(" ")[1];
     const verify = createVerifier({ key: async () => "secret" });
     if (token) {
-      const payload = await verify(token);
-      req.user = payload.payload;
+      const { payload } = await verify(token);
+      req.user = payload;
     }
   } catch (e) {
     return rep.code(400).send(e);
