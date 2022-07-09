@@ -8,7 +8,7 @@ declare module "fastify" {
 
   export interface FastifyRequest {
     user: {
-      name: string;
+      id: number;
       role: string;
     } | null;
   }

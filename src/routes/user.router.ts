@@ -28,7 +28,6 @@ const userRouter: FastifyPluginAsync = async (server: FastifyInstance) => {
   server.post(
     "/login",
     {
-      // preHandler: [server.auth],
       schema: {
         body: loginSchema,
         response: {

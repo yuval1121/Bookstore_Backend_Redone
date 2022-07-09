@@ -35,7 +35,7 @@ export const loginUserHandler: RouteHandler<{ Body: LoginInput }> = async (
   }
 
   const payload = {
-    name: user.name,
+    id: user.id,
     role: user.role,
   };
 
