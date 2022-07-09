@@ -4,6 +4,7 @@ import {
   deleteItemHandler,
   getItemHandler,
   getItemsHandler,
+  updateItemHandler,
 } from "../controllers/item.controller";
 import {
   createItemSchema,
@@ -68,6 +69,22 @@ const itemRouter: FastifyPluginAsync = async (server: FastifyInstance) => {
       },
     },
     deleteItemHandler
+  );
+
+  server.put(
+    "/:id",
+    {
+      preHandler: [server.auth, server.authAdmin],
+      schema: {
+        body: createItemSchema,
+        response: {
+          200: itemResponseSchema,
+        },
+        tags: ["Items"],
+        params: getItemSchema,
+      },
+    },
+    updateItemHandler
   );
 };
 

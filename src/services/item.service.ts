@@ -35,3 +35,12 @@ export const deleteItem = async (id: number) => {
     },
   });
 };
+
+export const updateItem = async (id: number, data: itemInput) => {
+  return await prisma.item.update({
+    where: {
+      id,
+    },
+    data,
+  });
+};

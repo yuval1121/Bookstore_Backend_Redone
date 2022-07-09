@@ -36,7 +36,7 @@ export const itemsResponseSchema = Type.Array(itemResponseSchema, {
   $id: "itemsResponseSchema",
 });
 
-export type ItemParams = Static<typeof getItemSchema>;
+export type itemParams = Static<typeof getItemSchema>;
 export type itemInput = Static<typeof createItemSchema>;
 export const itemSchemaArray = [
   getItemSchema,

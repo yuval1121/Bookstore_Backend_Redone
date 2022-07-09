@@ -1,10 +1,11 @@
 import { RouteHandler } from "fastify";
-import { ItemParams, itemInput } from "../schemas/item.schema";
+import { itemParams, itemInput } from "../schemas/item.schema";
 import {
   createItem,
   deleteItem,
   getItemById,
   getItems,
+  updateItem,
 } from "../services/item.service";
 
 export const getItemsHandler: RouteHandler = async (req, rep) => {
@@ -12,7 +13,7 @@ export const getItemsHandler: RouteHandler = async (req, rep) => {
   return rep.code(200).send(Items);
 };
 
-export const getItemHandler: RouteHandler<{ Params: ItemParams }> = async (
+export const getItemHandler: RouteHandler<{ Params: itemParams }> = async (
   req,
   rep
 ) => {
@@ -21,7 +22,7 @@ export const getItemHandler: RouteHandler<{ Params: ItemParams }> = async (
     const item = await getItemById(id);
     return rep.code(200).send(item);
   } catch (e) {
-    return rep.code(400).send(e);
+    return rep.code(500).send(e);
   }
 };
 
@@ -34,7 +35,7 @@ export const createItemHandler: RouteHandler<{ Body: itemInput }> = async (
   return rep.code(201).send(item);
 };
 
-export const deleteItemHandler: RouteHandler<{ Params: ItemParams }> = async (
+export const deleteItemHandler: RouteHandler<{ Params: itemParams }> = async (
   req,
   rep
 ) => {
@@ -43,6 +44,21 @@ export const deleteItemHandler: RouteHandler<{ Params: ItemParams }> = async (
     const item = await deleteItem(id);
     return rep.code(200).send(item);
   } catch (e) {
-    return rep.code(400).send(e);
+    return rep.code(500).send(e);
+  }
+};
+
+export const updateItemHandler: RouteHandler<{
+  Body: itemInput;
+  Params: itemParams;
+}> = async (req, rep) => {
+  const body = req.body;
+  const { id } = req.params;
+
+  try {
+    const item = await updateItem(id, body);
+    return rep.code(200).send(item);
+  } catch (e) {
+    return rep.code(500).send(e);
   }
 };
