@@ -1,6 +1,6 @@
 import fastify, { FastifyServerOptions } from "fastify";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
-import { userRouter } from "./routes";
+import { orderRouter, userRouter } from "./routes";
 import { authAdmin, authPreHandler } from "./utils/auth";
 import itemRouter from "./routes/item.router";
 import fastifySwagger from "@fastify/swagger";
@@ -13,7 +13,7 @@ export const build = (opts: FastifyServerOptions = {}) => {
 
   addSchemas(app);
 
-  app.decorateReply("user", null);
+  app.decorateRequest("user", null);
   app.decorate("auth", authPreHandler);
   app.decorate("authAdmin", authAdmin);
 
@@ -21,6 +21,7 @@ export const build = (opts: FastifyServerOptions = {}) => {
   app.register(fastifySwagger, swagOptions);
   app.register(userRouter, { prefix: "api/users" });
   app.register(itemRouter, { prefix: "api/items" });
+  app.register(orderRouter, { prefix: "api/orders" });
 
   return app;
 };

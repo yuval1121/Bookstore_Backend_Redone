@@ -18,6 +18,7 @@ export const getItemHandler: RouteHandler<{ Params: itemParams }> = async (
   rep
 ) => {
   const { id } = req.params;
+
   try {
     const item = await getItemById(id);
     return rep.code(200).send(item);
@@ -31,8 +32,14 @@ export const createItemHandler: RouteHandler<{ Body: itemInput }> = async (
   rep
 ) => {
   const body = req.body;
-  const item = await createItem(body);
-  return rep.code(201).send(item);
+
+  try {
+    const item = await createItem(body);
+    return rep.code(201).send(item);
+  } catch (e) {
+    console.log(e);
+    return rep.code(500).send(e);
+  }
 };
 
 export const deleteItemHandler: RouteHandler<{ Params: itemParams }> = async (
@@ -40,6 +47,7 @@ export const deleteItemHandler: RouteHandler<{ Params: itemParams }> = async (
   rep
 ) => {
   const { id } = req.params;
+
   try {
     const item = await deleteItem(id);
     return rep.code(200).send(item);

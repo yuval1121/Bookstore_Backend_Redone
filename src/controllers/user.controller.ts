@@ -8,6 +8,7 @@ export const registerUserHandler: RouteHandler<{
   Body: CreateUserInput;
 }> = async (req, rep) => {
   const body = req.body;
+
   try {
     const user = await createUser(body);
     return rep.code(201).send(user);

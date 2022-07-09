@@ -14,12 +14,12 @@ model User {
   age      Int
   password String
   role     String  @default("customer")
-  Orders   Order[]
+  orders   Order[]
 }
 
 model Item {
   id        Int     @id @default(autoincrement())
-  name      String
+  name      String  @unique
   price     Float
   alcoholic Boolean @default(false)
   orders    Order[]
@@ -29,8 +29,7 @@ model Order {
   id        Int      @id @default(autoincrement())
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
-  price     Float
   ownerId   Int
   owner     User     @relation(fields: [ownerId], references: [id])
-  Items     Item[]
+  items     Item[]
 }

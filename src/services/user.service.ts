@@ -2,8 +2,8 @@ import prisma from "../utils/prisma";
 import bcrypt from "bcrypt";
 import { CreateUserInput } from "../schemas/user.schema";
 
-export const createUser = async (input: CreateUserInput) => {
-  const { password, ...rest } = input;
+export const createUser = async (user: CreateUserInput) => {
+  const { password, ...rest } = user;
 
   const salt = await bcrypt.genSalt();
   const hashedPassword = await bcrypt.hash(password, salt);

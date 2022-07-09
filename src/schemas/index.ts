@@ -3,9 +3,10 @@ import { FastifyInstance, FastifyLoggerInstance } from "fastify";
 import { Server, IncomingMessage, ServerResponse } from "http";
 import { itemSchemaArray } from "./item.schema";
 import { userSchemaArray } from "./user.schema";
+import { orderSchemaArray } from "./order.schema";
 
 const getSchemas = () => {
-  return [...itemSchemaArray, ...userSchemaArray];
+  return [...itemSchemaArray, ...userSchemaArray, ...orderSchemaArray];
 };
 
 export const addSchemas = (
