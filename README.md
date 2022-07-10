@@ -67,6 +67,11 @@ $ cd Coffeeshop_Backend
 # Install dependencies
 $ npm install
 
+# Create .env and define postgres connection
+$ cat > .env
+$ DATABASE_URL="{connection}"
+
+
 # Run the app
 $ npm start
 
