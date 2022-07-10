@@ -9,7 +9,7 @@
     "prestart": "npm run build",
     "start": "node dist/src/server.js",
     "dev": "ts-node-dev src/server.ts",
-    "migrate": "npx prisma migrate dev --name ci && npx prisma generate",
+    "migrate": "npx prisma migrate dev --name ci",
     "resetDB": "npx prisma migrate reset",
     "test": "tap"
   },
@@ -29,13 +29,13 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@fastify/cors": "^8.0.0",
-    "@fastify/swagger": "^7.4.1",
+    "@fastify/cors": "8.0.0",
+    "@fastify/swagger": "7.4.1",
     "@fastify/type-provider-typebox": "2.0.1",
     "@prisma/client": "4.0.0",
     "@sinclair/typebox": "0.24.10",
     "bcrypt": "5.0.1",
-    "fast-jwt": "^1.6.0",
+    "fast-jwt": "1.6.0",
     "fastify": "4.2.0"
   }
 }
