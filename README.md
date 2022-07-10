@@ -77,8 +77,4 @@ localhost:5000/docs
 ## License
 
 ISC
-
----
-
-> GitHub [@yuval1121](https://github.com/yuval1121)
 ```
