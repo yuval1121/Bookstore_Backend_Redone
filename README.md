@@ -7,6 +7,8 @@
 
 <h4 align="center">A sample REST API simulating the server of a production coffeeshop web app built in Typescript, Fastify, Postgres, Github Actions , Node Tap and Prisma</a>.</h4>
 
+![CI Status](https://github.com/yuval1121/Coffeeshop_Backend_Redone/actions/workflows/github-actions.yml/badge.svg)
+
 <p align="center">
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"
          alt="NodeJS">
@@ -30,8 +32,7 @@
          alt="Fastify">
     <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white"
          alt="Prisma">
-    
-![CI Status](https://github.com/yuval1121/Coffeeshop_Backend_Redone/actions/workflows/github-actions.yml/badge.svg)
+
 </p>
 
 <p align="center">
