@@ -50,7 +50,7 @@
 - Passwords are hashed and salted.
 - Authentication and authorization with JWT tokens.
 - Automatically generated OpenAPI spec on the server.
-- Input validation with typebox.
+- Input and output validation with typebox.
 - CI pipeline.
 - Can be easily connected to cloud database like supabase.
 
