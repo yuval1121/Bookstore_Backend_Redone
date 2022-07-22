@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center">A sample REST API simulating the server of a production coffeeshop web app built in Typescript, Fastify, Postgres, Github Actions , Node Tap and Prisma</a>.</h4>
+<h4 align="center">A sample REST API simulating the server of a production coffee shop web app built in Typescript, Fastify, Postgres, Github Actions , Node Tap and Prisma</a>.</h4>
 
 ![CI Status](https://github.com/yuval1121/Coffeeshop_Backend_Redone/actions/workflows/github-actions.yml/badge.svg)
 
