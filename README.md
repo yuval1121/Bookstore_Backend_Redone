@@ -72,6 +72,8 @@ $ npm install
 $ cat > .env
 $ DATABASE_URL="{connection}"
 
+# Build the app
+$ npm run build
 
 # Run the app
 $ npm start
