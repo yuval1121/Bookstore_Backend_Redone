@@ -60,7 +60,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/yuval1121/Coffeeshop_Backend_Redone.git
+$ git clone https://github.com/yuval1121/Bookstore_Backend_Redone.git 
 
 # Go into the repository
 $ cd Coffeeshop_Backend
