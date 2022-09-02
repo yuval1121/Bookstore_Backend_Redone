@@ -1,7 +1,7 @@
 {
-  "name": "coffeeshop_backend_redone",
+  "name": "Bookstore_Backend_Redone",
   "version": "1.0.0",
-  "description": "Recreating my coffeeshop backend project",
+  "description": "Recreating my backend project",
   "main": "dist/server.js",
   "scripts": {
     "prebuild": "tsc --build --clean",
