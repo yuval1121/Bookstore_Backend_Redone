@@ -63,7 +63,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ git clone https://github.com/yuval1121/Bookstore_Backend_Redone.git 
 
 # Go into the repository
-$ cd Coffeeshop_Backend
+$ cd Bookstore_Backend_Redone
 
 # Install dependencies
 $ npm install
