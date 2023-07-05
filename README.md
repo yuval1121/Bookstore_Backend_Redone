@@ -52,7 +52,7 @@
 - Automatically generated OpenAPI spec on the server.
 - Input and output validation with typebox.
 - CI pipeline.
-- Can be easily connected to cloud database like supabase.
+- Can be easily connected to cloud databases like supabase.
 
 ## How To Use
 
